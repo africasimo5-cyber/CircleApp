@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { login, signup } from '../auth';
-import { MessageSquare, Lock, User, UserPlus } from 'lucide-react';
+import { MessageSquare, Lock, User, UserPlus, Eye, EyeOff } from 'lucide-react';
 
 function Login({ onLogin }) {
     const [isLogin, setIsLogin] = useState(true);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [displayName, setDisplayName] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
 
@@ -20,6 +22,12 @@ function Login({ onLogin }) {
         const trimmedDisplay = displayName.trim();
 
         console.log(`[LoginUI] Attempting ${isLogin ? 'Login' : 'Signup'} for:`, trimmedUser);
+
+        if (!isLogin && password !== confirmPassword) {
+            setError('Passwords do not match');
+            setLoading(false);
+            return;
+        }
 
         try {
             const result = isLogin
@@ -86,14 +94,35 @@ function Login({ onLogin }) {
                     <div className="relative group">
                         <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={20} />
                         <input
-                            type="password"
+                            type={showPassword ? "text" : "password"}
                             placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            className="w-full p-4 pl-12 bg-gray-800/50 border border-gray-700 rounded-2xl text-lg outline-none focus:border-blue-500 focus:bg-gray-800 transition-all placeholder:text-gray-600"
+                            className="w-full p-4 pl-12 pr-12 bg-gray-800/50 border border-gray-700 rounded-2xl text-lg outline-none focus:border-blue-500 focus:bg-gray-800 transition-all placeholder:text-gray-600"
                         />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-blue-500 transition-colors"
+                        >
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
                     </div>
+
+                    {!isLogin && (
+                        <div className="relative group animate-slide-up">
+                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-500 transition-colors" size={20} />
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Confirm Password"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                                required={!isLogin}
+                                className="w-full p-4 pl-12 bg-gray-800/50 border border-gray-700 rounded-2xl text-lg outline-none focus:border-blue-500 focus:bg-gray-800 transition-all placeholder:text-gray-600"
+                            />
+                        </div>
+                    )}
 
                     {error && (
                         <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-xl text-center text-sm">
