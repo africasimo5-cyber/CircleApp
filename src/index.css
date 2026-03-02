@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --primary-color: #3b82f6;
+  /* Tailwind Blue 500 */
+}
+
+body {
+  @apply bg-slate-950 text-slate-200 antialiased;
+  overscroll-behavior-y: none;
+}
+
+#root {
+  @apply h-[100dvh] flex flex-col;
+}
+
+/* Custom Scrollbar for cleaner look */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 rounded-full;
+}
+
+/* Utilities */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
