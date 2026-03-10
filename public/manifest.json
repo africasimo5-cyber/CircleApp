@@ -1,0 +1,24 @@
+{
+  "name": "CloseFriend",
+  "short_name": "CloseFriend",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "description": "A private, secure chat application for close circles.",
+  "lang": "en-US",
+  "dir": "ltr"
+}
