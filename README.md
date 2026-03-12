@@ -1,16 +1,68 @@
-# React + Vite
+# Circle - Private Chat Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Circle is a modern, minimalist, and secure private chat application built with React and Supabase. It's designed for close circles, focusing on privacy and ease of use.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   **Private Messaging**: Real-time, one-on-one private chat sessions.
+-   **Safe Signup & Login**: Secure authentication system with password protection.
+-   **Friendship System**: Add friends by username to build your private circle (limited to 5 friends for exclusivity).
+-   **PWA Ready**: Install the app on your home screen with custom branding and a native-like experience.
+-   **Real-time Updates**: Instant message delivery and connection status indicators.
+-   **Premium Design**: Sleek dark-mode interface with smooth animations and modern typography.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-   **Frontend**: [React](https://reactjs.org/) (Functional Components, Hooks)
+-   **Build Tool**: [Vite](https://vite.dev/) (Fast Development & Optimized Builds)
+-   **Backend/DB**: [Supabase](https://supabase.com/) (PostgreSQL + Real-time engine)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **Icons**: [Lucide React](https://lucide.dev/)
+-   **State Management**: React State & Supabase Real-time Subscriptions
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+-   Node.js (v18+)
+-   npm or yarn
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/your-repo/CircleApp.git
+    cd CircleApp
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    ```
+
+3.  Configure Environment Variables:
+    Create a `.env.local` file in the root directory and add your Supabase credentials:
+    ```env
+    VITE_SUPABASE_URL=your_supabase_url
+    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+    ```
+
+4.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+## 🏗️ Building for Production
+
+To create an optimized production build, run:
+```bash
+npm run build
+```
+The output will be in the `dist/` directory, ready to be deployed.
+
+## 📱 PWA Support
+
+The application includes a `manifest.json` and a Service Worker (`sw.js`) to support Progressive Web App features. It uses high-resolution icons located in `/public/icons/`.
+
+---
+*Built for privacy, designed for connection.*

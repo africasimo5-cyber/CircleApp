@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <div className="app-container">
+    <div className="flex flex-col w-full h-full overflow-hidden">
       {user ? (
         <Chat user={user} onLogout={handleLogout} />
       ) : (
